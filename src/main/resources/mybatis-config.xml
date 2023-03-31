@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- DTD 추가 -->
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<!-- 비어있는 값을 만난 경우 null로 처리하도록 세팅 -->
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL"></setting>
+	</settings>
+	<typeAliases>
+		<typeAlias type="com.kh.marchpring.board.domain.Board" alias="BoardVO"/>
+		<typeAlias type="com.kh.marchpring.board.domain.Reply" alias="ReplyVO"/>
+	</typeAliases>
+	
+	<!-- 맵퍼 등록 mapper.xml 연관) => 생략 가능: root-context.xml에 생략가능 코드 작성함 -->
+	<!-- <mappers>
+		<mapper resource="mappers/member-mapper.xml"/>
+		<mapper resource="mappers/notice-mapper.xml"/>
+	</mappers> -->
+</configuration>
