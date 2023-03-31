@@ -69,5 +69,5 @@
 	<delete id="deleteReply">
 		DELETE FROM REPLY_TBL WHERE REPLY_NO = #{replyNo }
 	</delete>
-	
+
 </mapper>

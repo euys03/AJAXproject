@@ -17,4 +17,5 @@
 		<mapper resource="mappers/member-mapper.xml"/>
 		<mapper resource="mappers/notice-mapper.xml"/>
 	</mappers> -->
+
 </configuration>

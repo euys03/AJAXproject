@@ -21,6 +21,7 @@
 			<url>http://www.datanucleus.org/downloads/maven2/</url>
 		</repository>
 	</repositories>
+	
 	<dependencies>
 	
 		<!-- 로그 -->
@@ -111,6 +112,7 @@
 		
 		
 		
+
 	
 		<!-- Spring -->
 		<dependency>
