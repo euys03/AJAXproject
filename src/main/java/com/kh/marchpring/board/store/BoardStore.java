@@ -23,11 +23,17 @@ public interface BoardStore {
 
 
 	
-	/** 댓글 **/
-	
+	/********* 댓글 *********/
+	/* 댓글 등록 */
 	public int insertReply(SqlSession session, Reply reply);
 
-
+	/* 댓글 목록 */
 	public List<Reply> selectAllReply(SqlSession session, Integer boardNo);
+
+	/* 댓글 수정 */
+	public int updateReply(SqlSession session, Reply reply);
+
+	/* 댓글 삭제 */
+	public int deleteReply(SqlSession session, Integer replyNo);
 
 }

@@ -47,5 +47,21 @@ public interface BoardService {
 	 */
 	public List<Reply> selectAllReply(Integer boardNo);
 
+	
+	/**
+	 * 댓글 수정
+	 * @param reply
+	 * @return
+	 */
+	public int updateReply(Reply reply);
+
+	
+	/**
+	 * 댓글 삭제
+	 * @param replyNo
+	 * @return
+	 */
+	public int deleteReply(Integer replyNo);
+
 
 }
