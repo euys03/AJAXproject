@@ -10,6 +10,7 @@
 	<typeAliases>
 		<typeAlias type="com.kh.marchpring.board.domain.Board" alias="BoardVO"/>
 		<typeAlias type="com.kh.marchpring.board.domain.Reply" alias="ReplyVO"/>
+		<typeAlias type="com.kh.marchpring.photo.domain.Photo" alias="PhotoVO"/>
 	</typeAliases>
 	
 	<!-- 맵퍼 등록 mapper.xml 연관) => 생략 가능: root-context.xml에 생략가능 코드 작성함 -->
