@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="PhotoMapper">
+	<resultMap type="PhotoVO" id="photoResultMap">
+		<id 	property="photoNo" 			column="PHOTO_NO" />
+		<result property="photoWriter" 		column="PHOTO_WRITER" />
+		<result property="photoContent" 	column="PHOTO_CONTENT" />
+		<result property="photoFilename" 	column="PHOTO_FILENAME"/>
+		<result property="photoFileRename" 	column="PHOTO_FILERENAME"/>
+		<result property="photoFilepath" 	column="PHOTO_FILEPATH"/>
+		<result property="photoDate" 		column="PHOTO_DATE" />
+		<result property="viewCount" 		column="VIEW_COUNT" />
+	</resultMap>
+	
+	<!-- 사진 등록 -->
+	<insert id="insertPhoto">
+		INSERT INTO PHOTO_TBL VALUES(SEQ_PHOTO_NO.NEXTVAL, #{photoWriter}, #{photoContent}, #{photoFilename}, #{photoFileRename}, #{photoFilepath}, DEFAULT, DEFAULT)
+	</insert>
+	
+	<!-- 사진 목록 확인 -->
+	<select id="morePhotoList" resultMap="photoResultMap">
+		SELECT * FROM PHOTO_TBL
+	</select>
+</mapper>
+
+
+
+
