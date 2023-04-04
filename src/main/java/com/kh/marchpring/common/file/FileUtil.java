@@ -60,7 +60,7 @@ public class FileUtil {
 			}
 			*/
 			
-	// 방법2. 
+	// 방법2. Add throws declaration 사용하는 방법
 			multi.transferTo(new File(renameFilePath));	// 파일 저장
 			
 			result.put("original", originalFilename);

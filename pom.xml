@@ -24,6 +24,14 @@
 
 	<dependencies>
 	
+		<!-- AspectJ Weaver (AOP를 사용하기 위해서 추가함.) -->
+		<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.8.8</version>
+		</dependency>
+	
 		<!-- 로그 -->
 		<dependency>
 		  <groupId>org.bgee.log4jdbc-log4j2</groupId>

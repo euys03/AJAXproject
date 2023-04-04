@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!-- AOP XML 설정 추가 -->
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+						http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+						
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<!-- Bean 등록 -->
@@ -32,4 +39,73 @@
 		<property name="maxInMemorySize" value="100000000"></property>
 
 	</bean>
+	
+	
+	<!-- AOP XML 방식 -->
+<!-- 	<bean id="logAdvice" class="com.kh.marchpring.common.LogAdvice"></bean> -->
+<!-- 	<bean id="aroundAdvice" class="com.kh.marchpring.common.AroundLog"></bean> -->
+	
+<!-- 	<aop:config> -->
+<!-- 		<aop:pointcut expression="execution(* com.kh.marchpring..*Impl.*(..))" id="serviceImplPointCut"/> -->
+<!-- 		<aop:aspect ref="logAdvice"> -->
+<!-- 			<aop:before method="showLog" pointcut-ref="serviceImplPointCut"/>	// join point 전에 실행 -->
+<!-- 			<aop:after method="showLog" pointcut-ref="serviceImplPointCut"/>	join point 후에 실행 -->
+<!-- 		</aop:aspect> -->
+<!-- 		<aop:aspect ref="aroundAdvice"> -->
+<!-- 			<aop:around method="checkTimeMethod" pointcut-ref="serviceImplPointCut"/> -->
+<!-- 		</aop:aspect> -->
+<!-- 	</aop:config> -->
+	
+<!--
+	* com.kh.marchpring..*Impl.*(..)의 의미는 무엇일까?
+	1. 리턴형 패키지명.클래스명.메소드명(매개변수)
+	2. 리턴형 패키지명..클래스명.메소드명(매개변수)
+	exercies1) * org.kh.member.model.service.*.*(..)
+	=>	모든 리턴형이며 org.kh.member.model.service 패키지에 있는 모든 클래스 및 모든 메소드(*.*)
+		((..) = 매개변수는 0개 이상)
+	exercise2) * org.kh.member.model.service..*.*(..)
+	=>	모든 리턴형이며 'service 패키지 및 하위 패키지'에 있는 모든 클래스 및 모든 메소드(*.*)
+		((..) = 매개변수는 0개 이상)
+	exercies3) * org.kh.member.model.service..*.*()
+	=>	모든 리턴형, service 패키지 및 하위 패키지, 모든 클래스 및 모든 메소드(*.*)
+		(() = 매개변수는 없는 것)
+	exercise4) * org.kh.member.model.service..*.*(*)
+	=> 모든 리턴형, service 패키지 및 하위 패키지, 모든 클래스 및 모든 메소드(*.*)
+		((*) = 매개변수는 1개 = 뭐든지 가능)
+	exercies5) * org.kh.member.model.service..*.*(Integer,..)
+	=>	모든 리턴형, service 패키지 및 하위 패키지, 모든 클래스 및 모든 메소드(*.*)
+		((Integer,..) = 매개변수의 첫번째는 정수이고 0개 이상)
+	exercise6) int org.kh.member.service..*.*(Integer,..)
+	=>	int형,  service 패키지 및 하위 패키지, 모든 클래스 및 모든 메소드(*.*)
+		((Integer,..) = 매개변수 첫번째 정수, 0개 이상)
+	exercise7) int org.kh.member.service..*Impl.*(..)
+	=>	int형,  service 패키지 및 하위 패키지, Impl로 끝나는 모든 클래스 및 모든 메소드
+		((..) = 매개변수는 0개 이상)
+-->
+	
+
+
+	
+	<!-- 	Spring AOP - Transaction -->
+	<!-- 1번. TransactionManager Bean 등록 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+		
+	<!-- 	2번. 트랜잭션 설정 -->
+	<tx:advice id = "txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="insert*" rollback-for="Exception"/>
+			<tx:method name="update*" rollback-for="Exception"/>
+			<tx:method name="delete*" rollback-for="Exception"/>
+			<tx:method name="select*" read-only="true"/>
+		</tx:attributes>
+	</tx:advice>
+	
+	<!-- 	3번. Aspect 설정 -->
+	<aop:config proxy-target-class="true">
+		<aop:pointcut expression="execution(* com.kh.marchpring..*Impl.*(..))" id="serviceMethod"/>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethod"/>
+	</aop:config>
+	
 </beans>
