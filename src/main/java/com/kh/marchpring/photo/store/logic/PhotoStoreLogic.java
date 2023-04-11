@@ -21,6 +21,12 @@ public class PhotoStoreLogic implements PhotoStore{
 		return result;
 	}
 
+	@Override
+	public int updatePhoto(SqlSession session, Photo photo) {
+		int result = session.update("PhotoMapper.updatePhoto", photo);
+		return result;
+	}
+
 	/* 사진 목록 StoreLogic */
 	@Override
 	public List<Photo> morePhoto(SqlSession session, Integer start) {

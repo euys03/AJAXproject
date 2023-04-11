@@ -11,7 +11,7 @@ import com.kh.marchpring.board.domain.Reply;
 import com.kh.marchpring.board.service.BoardService;
 import com.kh.marchpring.board.store.BoardStore;
 
-@Service
+@Service("boardService")
 public class BoardServiceImpl implements BoardService{
 	
 	@Autowired

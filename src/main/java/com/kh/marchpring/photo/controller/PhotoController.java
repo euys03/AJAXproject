@@ -48,10 +48,10 @@ public class PhotoController {
 			, @ModelAttribute Photo photo) {
 		Map<String, String> fileInfo = null;
 		try {
-			fileInfo = fileUtil.saveFile(multi, request);
-			photo.setPhotoFilename(fileInfo.get("original"));
-			photo.setPhotoFileRename(fileInfo.get("rename"));
-			photo.setPhotoFilepath(fileInfo.get("renameFilepath"));
+//			fileInfo = fileUtil.saveFile(multi, request);
+//			photo.setPhotoFilename(fileInfo.get("original"));
+//			photo.setPhotoFileRename(fileInfo.get("rename"));
+//			photo.setPhotoFilepath(fileInfo.get("renameFilepath"));
 			int result = pService.insertPhoto(photo);
 		} catch (Exception e) {
 			// TODO: handle exception

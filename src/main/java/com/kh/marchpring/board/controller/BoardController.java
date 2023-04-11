@@ -52,10 +52,10 @@ public class BoardController {
 		
 		try {
 			// 파일 셋팅
-			fileInfo = fileUtil.saveFile(multi, request);
-			board.setBoardFilename(fileInfo.get("original"));
-			board.setBoardFileRename(fileInfo.get("rename"));
-			board.setBoardFilepath(fileInfo.get("renameFilepath"));
+//			fileInfo = fileUtil.saveFile(multi, request);
+//			board.setBoardFilename(fileInfo.get("original"));
+//			board.setBoardFileRename(fileInfo.get("rename"));
+//			board.setBoardFilepath(fileInfo.get("renameFilepath"));
 			
 			int result = bService.registerBoard(board);
 			mv.setViewName("redirect:/board/list");

@@ -9,7 +9,7 @@ import com.kh.marchpring.board.domain.Board;
 import com.kh.marchpring.board.domain.Reply;
 import com.kh.marchpring.board.store.BoardStore;
 
-@Repository
+@Repository("boardStore")
 public class BoardStoreLogic implements BoardStore{
 
 	/* 게시글 등록 */

@@ -103,9 +103,10 @@
 	</tx:advice>
 	
 	<!-- 	3번. Aspect 설정 -->
-	<aop:config proxy-target-class="true">
+	<aop:config proxy-target-class="false">
 		<aop:pointcut expression="execution(* com.kh.marchpring..*Impl.*(..))" id="serviceMethod"/>
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethod"/>
 	</aop:config>
+	
 	
 </beans>

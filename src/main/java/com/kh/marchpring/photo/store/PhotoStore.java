@@ -11,6 +11,8 @@ public interface PhotoStore {
 	/* 사진 등록 Store */
 	public int insertPhoto(SqlSession session, Photo photo);
 
+	public int updatePhoto(SqlSession session, Photo photo);
+
 	/* 사진 목록 Store */
 	public List<Photo> morePhoto(SqlSession session, Integer start);
 

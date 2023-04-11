@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Aspect
 public class LogAdvice {
-
+	// PointCut 어노테이션, pom.xml에 버전 이슈(1.9.0) 버전 사용 필요
 	@Pointcut("execution(* com.kh.marchpring..*Impl.*(..))")
 	public void allPointCut() {}
 	
